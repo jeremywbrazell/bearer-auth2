@@ -2,10 +2,9 @@
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-// const { token } = require('morgan');
-const SECRET = 'secretSauce';
+require('dotenv').config;
 
-
+const SECRET = process.env.SECRET || 'candyIsDandy';
 
 const userSchema = (sequelize, DataTypes) => {
   const model = sequelize.define('User', {
@@ -21,10 +20,10 @@ const userSchema = (sequelize, DataTypes) => {
       get() {
         return jwt.sign({ username: this.username }, SECRET);
       },
-      set(tokenObj) {
-      let token = jwt.sign(tokenObj, SECRET);
-      return token;
-      }
+      // set(tokenObj) {
+      // let token = jwt.sign(tokenObj, SECRET);
+      // return token;
+      // }
     }
   });
 
