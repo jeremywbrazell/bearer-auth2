@@ -1,21 +1,11 @@
 'use strict';
 
 const express = require('express');
-// const morgan = require('morgan');
-// const { Sequelize, DataTypes } = require('sequelize');
 const authRouter = express.Router();
-// const userModel = require('./auth/models/users.js');
 const { Users } = require('./auth/models/index.js');
 const basicAuth = require('./auth/middleware/basic.js')
 const bearerAuth = require('./auth/middleware/bearer.js');
-// const DATABASE_URL = process.env.DATABASE_URL || 'postgres://localhost:5432/bearerauth';
 
-// const app = express();
-
-// const sequelize = new Sequelize(DATABASE_URL);
-// const Users = userModel(sequelize, DataTypes);
-
-// app.use(morgan('dev'));
 authRouter.use(express.json());
 
 authRouter.post('/signup', async (req, res, next) => {
